@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "EscrowTest",
+  "sourceName": "contracts/EscrowTest.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220910a5702919da5bebb6641f9f986b3d94c6c7f5277d5260e6fa4390f939ebb7c64736f6c634300081c0033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220910a5702919da5bebb6641f9f986b3d94c6c7f5277d5260e6fa4390f939ebb7c64736f6c634300081c0033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

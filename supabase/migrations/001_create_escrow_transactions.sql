@@ -69,8 +69,8 @@ ALTER TABLE escrow_transactions ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Users can view their own transactions" ON escrow_transactions
 FOR SELECT
 USING (
-    buyer_address = lower(auth.jwt() ->> 'wallet_address')
-    OR seller_address = lower(auth.jwt() ->> 'wallet_address')
+        lower(buyer_address) = lower(auth.jwt()->>'wallet_address') OR
+        lower(seller_address) = lower(auth.jwt()->>'wallet_address')
 );
 
 -- Policy: Intermediario tiene permisos de UPDATE sobre el estado
