@@ -16,7 +16,9 @@ interface InspectionData {
   };
 }
 
-export function InspectionForm({ dealId, onSubmit }: { dealId: string, onSubmit?: (data: any, hash: string) => void }) {
+export function InspectionForm({ dealId, onSubmit }: { dealId: string, onSubmit?: (data: InspectionData, hash: string) => void }) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _dealId = dealId;
   const [obdCodeInput, setObdCodeInput] = useState('');
   const [data, setData] = useState<InspectionData>({
     obd2Codes: [],
