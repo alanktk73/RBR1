@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { injected } from "wagmi/connectors";
 
 interface ShellProps {
   children: React.ReactNode;
@@ -31,9 +35,24 @@ export function Shell({ children }: ShellProps) {
             </nav>
           </div>
           <div>
-            <Button variant="outline" className="font-semibold">
-              Connect Wallet
-            </Button>
+            {(() => {
+              const { address, isConnected } = useAccount();
+              const { connect } = useConnect();
+              const { disconnect } = useDisconnect();
+
+              if (isConnected) {
+                return (
+                  <Button variant="outline" className="font-semibold" onClick={() => disconnect()}>
+                    {address?.slice(0, 6)}...{address?.slice(-4)}
+                  </Button>
+                );
+              }
+              return (
+                <Button variant="outline" className="font-semibold" onClick={() => connect({ connector: injected() })}>
+                  Connect Wallet
+                </Button>
+              );
+            })()}
           </div>
         </div>
       </header>
