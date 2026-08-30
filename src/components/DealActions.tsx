@@ -41,7 +41,7 @@ export function DealActions({ deal }: { deal: Deal }) {
           disabled={deal.status !== "CONTRACT_SIGNED" || isPending || isConfirming}
           onClick={handleRelease}
         >
-          {isPending ? "Confirming..." : isConfirming ? "Waiting for receipt..." : "Release Funds"}
+          {isPending ? "Confirmando..." : isConfirming ? "Esperando recibo..." : "Liberar Fondos"}
         </Button>
         <Button
           variant="outline"
@@ -49,10 +49,10 @@ export function DealActions({ deal }: { deal: Deal }) {
           disabled={deal.status === "RELEASED" || isPending || isConfirming}
           onClick={handleRefund}
         >
-          {isPending ? "Confirming..." : isConfirming ? "Waiting for receipt..." : "Refund"}
+          {isPending ? "Confirmando..." : isConfirming ? "Esperando recibo..." : "Reembolsar"}
         </Button>
       </div>
-      {isConfirmed && <div className="text-green-500 text-center text-sm">Action confirmed!</div>}
+      {isConfirmed && <div className="text-green-500 text-center text-sm">¡Acción confirmada!</div>}
     </div>
   );
 }

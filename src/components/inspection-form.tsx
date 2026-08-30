@@ -57,16 +57,16 @@ export function InspectionForm({ dealId, onSubmit }: { dealId: string, onSubmit?
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
-          <label className="block text-sm font-medium">OBD-II Codes</label>
+          <label className="block text-sm font-medium">Códigos OBD-II</label>
           <div className="flex gap-2">
             <input
               type="text"
               value={obdCodeInput}
               onChange={e => setObdCodeInput(e.target.value)}
               className="flex-1 bg-transparent border border-[#27272A] rounded p-2"
-              placeholder="e.g. P0300"
+              placeholder="ej. P0300"
             />
-            <button type="button" onClick={handleAddCode} className="px-4 py-2 bg-[#27272A] rounded hover:bg-gray-700">Add</button>
+            <button type="button" onClick={handleAddCode} className="px-4 py-2 bg-[#27272A] rounded hover:bg-gray-700">Añadir</button>
           </div>
           <div className="flex flex-wrap gap-2 mt-2">
             {data.obd2Codes.map((code, idx) => (
@@ -76,10 +76,10 @@ export function InspectionForm({ dealId, onSubmit }: { dealId: string, onSubmit?
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold border-b border-[#27272A] pb-2">Paint Thickness (Microns)</h3>
+          <h3 className="text-lg font-semibold border-b border-[#27272A] pb-2">Grosor de Pintura (Micras)</h3>
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm mb-1">Hood</label>
+              <label className="block text-sm mb-1">Capó</label>
               <input
                 type="number"
                 value={data.paintThickness.hood}
@@ -88,7 +88,7 @@ export function InspectionForm({ dealId, onSubmit }: { dealId: string, onSubmit?
               />
             </div>
             <div>
-              <label className="block text-sm mb-1">Roof</label>
+              <label className="block text-sm mb-1">Techo</label>
               <input
                 type="number"
                 value={data.paintThickness.roof}
@@ -97,7 +97,7 @@ export function InspectionForm({ dealId, onSubmit }: { dealId: string, onSubmit?
               />
             </div>
             <div>
-              <label className="block text-sm mb-1">Doors</label>
+              <label className="block text-sm mb-1">Puertas</label>
               <input
                 type="number"
                 value={data.paintThickness.doors}
@@ -109,7 +109,7 @@ export function InspectionForm({ dealId, onSubmit }: { dealId: string, onSubmit?
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold border-b border-[#27272A] pb-2">Checklist</h3>
+          <h3 className="text-lg font-semibold border-b border-[#27272A] pb-2">Lista de Verificación</h3>
 
           <label className="flex items-center gap-2">
             <input
@@ -118,38 +118,38 @@ export function InspectionForm({ dealId, onSubmit }: { dealId: string, onSubmit?
               onChange={e => setData(prev => ({ ...prev, checklist: { ...prev.checklist, leaks: e.target.checked } }))}
               className="rounded bg-[#27272A] border-transparent focus:ring-offset-0 focus:ring-0"
             />
-            <span className="text-sm">Visible leaks (Oil, transmission, etc.)</span>
+            <span className="text-sm">Fugas visibles (Aceite, transmisión, etc.)</span>
           </label>
 
           <div className="grid grid-cols-2 gap-4 mt-2">
             <div>
-              <label className="block text-sm mb-1">Brakes Wear</label>
+              <label className="block text-sm mb-1">Desgaste de Frenos</label>
               <select
                 value={data.checklist.brakesWear}
                 onChange={e => setData(prev => ({ ...prev, checklist: { ...prev.checklist, brakesWear: e.target.value } }))}
                 className="w-full bg-[#09090B] border border-[#27272A] rounded p-2"
               >
-                <option>Good</option>
-                <option>Fair</option>
-                <option>Needs Replacement</option>
+                <option>Bien</option>
+                <option>Regular</option>
+                <option>Necesita Reemplazo</option>
               </select>
             </div>
             <div>
-              <label className="block text-sm mb-1">Fluids Status</label>
+              <label className="block text-sm mb-1">Estado de Fluidos</label>
               <select
                 value={data.checklist.fluidsStatus}
                 onChange={e => setData(prev => ({ ...prev, checklist: { ...prev.checklist, fluidsStatus: e.target.value } }))}
                 className="w-full bg-[#09090B] border border-[#27272A] rounded p-2"
               >
-                <option>Good</option>
-                <option>Needs Service</option>
+                <option>Bien</option>
+                <option>Necesita Servicio</option>
               </select>
             </div>
           </div>
         </div>
 
         <button type="submit" className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded font-semibold transition-colors mt-6">
-          Sign & Submit Inspection
+          Firmar y Enviar Inspección
         </button>
       </form>
     </div>

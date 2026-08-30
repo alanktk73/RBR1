@@ -15,20 +15,20 @@ export default function Home() {
     <Shell>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Your Escrow Deals</h1>
-          <p className="text-muted-foreground mt-2">Manage your vehicle buying and selling transactions securely.</p>
+          <h1 className="text-3xl font-bold tracking-tight">Tus Tratos Escrow</h1>
+          <p className="text-muted-foreground mt-2">Gestiona tus transacciones de compra y venta de vehículos de forma segura.</p>
         </div>
         <div className="flex space-x-4 items-center">
           <DemoDealCreator />
           <Link href="/create">
-            <Button>Create Offer</Button>
+            <Button>Crear Oferta</Button>
           </Link>
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {!isLoaded ? (
-          <div>Loading deals...</div>
+          <div>Cargando tratos...</div>
         ) : deals.map((deal) => (
           <Card key={deal.id} className="flex flex-col">
             <CardHeader>
@@ -38,14 +38,14 @@ export default function Home() {
                   {deal.status.replace("_", " ")}
                 </Badge>
               </div>
-              <CardDescription>Role: {deal.role}</CardDescription>
+              <CardDescription>Rol: {deal.role === "BUYER" ? "COMPRADOR" : deal.role === "SELLER" ? "VENDEDOR" : deal.role}</CardDescription>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col justify-between">
               <div className="text-2xl font-bold mb-6">
                 ${deal.amount_mxnb.toLocaleString('es-MX')} MXNB
               </div>
               <Link href={`/deal/${deal.id}`} className="w-full">
-                <Button variant="outline" className="w-full">View Details</Button>
+                <Button variant="outline" className="w-full">Ver Detalles</Button>
               </Link>
             </CardContent>
           </Card>

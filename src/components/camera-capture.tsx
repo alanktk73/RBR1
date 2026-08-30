@@ -16,7 +16,7 @@ export function CameraCapture({ onCapture }: { onCapture?: (file: File, geo: Geo
 
   const requestLocationAndCapture = () => {
     if (!navigator.geolocation) {
-      setErrorMsg('Geolocation is not supported by your browser.');
+      setErrorMsg('La geolocalización no es compatible con tu navegador.');
       return;
     }
 
@@ -36,7 +36,7 @@ export function CameraCapture({ onCapture }: { onCapture?: (file: File, geo: Geo
       },
       (err) => {
         console.error('Geo error', err);
-        setErrorMsg('Location access is required for capture.');
+        setErrorMsg('Se requiere acceso a la ubicación para la captura.');
       },
       { enableHighAccuracy: true }
     );
@@ -59,7 +59,7 @@ export function CameraCapture({ onCapture }: { onCapture?: (file: File, geo: Geo
         <div className="text-xs text-gray-400 mb-4">
           <p>Lat: {geoData.latitude}</p>
           <p>Lng: {geoData.longitude}</p>
-          <p>Time: {new Date(geoData.timestamp).toLocaleString()}</p>
+          <p>Hora: {new Date(geoData.timestamp).toLocaleString()}</p>
         </div>
       )}
 
@@ -78,14 +78,14 @@ export function CameraCapture({ onCapture }: { onCapture?: (file: File, geo: Geo
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-3/4 h-3/4 border border-[#27272A] opacity-50"></div>
         </div>
-        <p className="text-[#10B981] text-center px-4">Align vehicle within guides</p>
+        <p className="text-[#10B981] text-center px-4">Alinea el vehículo dentro de las guías</p>
       </div>
 
       <button
         onClick={requestLocationAndCapture}
         className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
       >
-        Capture with GPS
+        Capturar con GPS
       </button>
     </div>
   );
