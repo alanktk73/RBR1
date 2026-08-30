@@ -3,10 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import EscrowTestABI from "../artifacts/contracts/EscrowTest.sol/EscrowTest.json";
-import { useDeals } from "@/hooks/useDeals";
-import { useEffect } from "react";
+import { useDeals, type Deal } from "@/hooks/useDeals";
 
-export function DealActions({ deal }: { deal: any }) {
+export function DealActions({ deal }: { deal: Deal }) {
   const { updateDealStatus } = useDeals();
   const { data: hash, isPending, writeContract } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });

@@ -6,6 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { DealActions } from "@/components/DealActions";
 import { useDeals } from "@/hooks/useDeals";
+import { CameraCapture } from "@/components/camera-capture";
+import { InspectionForm } from "@/components/inspection-form";
 
 export default function DealDetailsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -101,6 +103,17 @@ export default function DealDetailsPage({ params }: { params: Promise<{ id: stri
             </div>
           </CardContent>
         </Card>
+      </div>
+
+      <div className="mt-8 space-y-8">
+        <div>
+          <h2 className="text-xl font-bold tracking-tight mb-4">Vehicle Verification</h2>
+          <CameraCapture />
+        </div>
+        <div>
+          <h2 className="text-xl font-bold tracking-tight mb-4">Mechanical Inspection</h2>
+          <InspectionForm dealId={id} />
+        </div>
       </div>
     </Shell>
   );
