@@ -24,7 +24,7 @@ function WalletConnectButton() {
   }
   return (
     <Button variant="outline" className="font-semibold" onClick={() => connect({ connector: injected() })}>
-      Connect Wallet
+      Conectar Billetera
     </Button>
   );
 }
@@ -43,7 +43,7 @@ export function Shell({ children }: ShellProps) {
                 href="/"
                 className="flex items-center text-sm font-medium text-muted-foreground hover:text-foreground"
               >
-                Dashboard
+                Panel Principal
               </Link>
               <Link
                 href="/admin"

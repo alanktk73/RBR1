@@ -39,8 +39,8 @@ export default function AdminDashboard() {
     <Shell>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Admin Dashboard</h1>
-          <p className="text-muted-foreground mt-2">Manage and oversee all platform escrow transactions.</p>
+          <h1 className="text-3xl font-bold tracking-tight">Panel de Administrador</h1>
+          <p className="text-muted-foreground mt-2">Gestiona y supervisa todas las transacciones escrow de la plataforma.</p>
         </div>
       </div>
 
@@ -49,11 +49,11 @@ export default function AdminDashboard() {
           <table className="w-full caption-bottom text-sm">
             <thead className="[&_tr]:border-b">
               <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Deal ID</th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Amount (MXNB)</th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Status</th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Date</th>
-                <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">Actions</th>
+                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">ID Trato</th>
+                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Monto (MXNB)</th>
+                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Estado</th>
+                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">Fecha</th>
+                <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">Acciones</th>
               </tr>
             </thead>
             <tbody className="[&_tr:last-child]:border-0">
@@ -74,20 +74,20 @@ export default function AdminDashboard() {
                   </td>
                   <td className="p-4 align-middle text-right space-x-2">
                     {deal.status === "DOCS_PENDING" && (
-                      <Button size="sm" variant="outline">Verify Docs</Button>
+                      <Button size="sm" variant="outline">Verificar Docs</Button>
                     )}
                     {deal.status === "CONTRACT_SIGNED" && (
-                      <Button size="sm">Approve Release</Button>
+                      <Button size="sm">Aprobar Liberación</Button>
                     )}
                     <Link href={`/deal/${deal.id}`}>
-                      <Button size="sm" variant="ghost">View</Button>
+                      <Button size="sm" variant="ghost">Ver</Button>
                     </Link>
                   </td>
                 </tr>
               ))}
               {adminMockDeals.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="p-4 text-center text-muted-foreground">No active deals found.</td>
+                  <td colSpan={5} className="p-4 text-center text-muted-foreground">No se encontraron tratos activos.</td>
                 </tr>
               )}
             </tbody>

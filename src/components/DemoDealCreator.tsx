@@ -51,9 +51,9 @@ export function DemoDealCreator() {
         onClick={handleDemo}
         disabled={isPending || isConfirming}
       >
-        {isPending ? "Confirming..." : isConfirming ? "Waiting for receipt..." : "Demo: Auto-Deposit"}
+        {isPending ? "Confirmando..." : isConfirming ? "Esperando recibo..." : "Demo: Auto-Depósito"}
       </Button>
-      {isConfirmed && <span className="text-sm text-green-500">Done!</span>}
+      {isConfirmed && <span className="text-sm text-green-500">¡Listo!</span>}
     </div>
   );
 }

@@ -56,50 +56,50 @@ export default function CreateOfferPage() {
     <Shell>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Create Escrow Offer</h1>
-          <p className="text-muted-foreground mt-2">Initialize a new secure transaction for a vehicle.</p>
+          <h1 className="text-3xl font-bold tracking-tight">Crear Oferta Escrow</h1>
+          <p className="text-muted-foreground mt-2">Inicializa una nueva transacción segura para un vehículo.</p>
         </div>
       </div>
 
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
-          <CardTitle>Vehicle & Transaction Details</CardTitle>
-          <CardDescription>Enter the details of the vehicle and the escrow amount.</CardDescription>
+          <CardTitle>Detalles del Vehículo y Transacción</CardTitle>
+          <CardDescription>Ingresa los detalles del vehículo y el monto del escrow.</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="make">Make</Label>
-                <Input id="make" name="make" placeholder="e.g. Honda" required />
+                <Label htmlFor="make">Marca</Label>
+                <Input id="make" name="make" placeholder="ej. Honda" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="model">Model</Label>
-                <Input id="model" name="model" placeholder="e.g. Civic" required />
+                <Label htmlFor="model">Modelo</Label>
+                <Input id="model" name="model" placeholder="ej. Civic" required />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="year">Year</Label>
+                <Label htmlFor="year">Año</Label>
                 <Input id="year" name="year" type="number" placeholder="2021" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="vin">VIN</Label>
-                <Input id="vin" name="vin" placeholder="17-character VIN" required />
+                <Label htmlFor="vin">VIN (Número de Serie)</Label>
+                <Input id="vin" name="vin" placeholder="VIN de 17 caracteres" required />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="amount">Amount (MXNB)</Label>
+              <Label htmlFor="amount">Monto (MXNB)</Label>
               <Input id="amount" name="amount" type="number" placeholder="350000" required />
             </div>
 
             <Button type="submit" className="w-full" disabled={isPending || isConfirming}>
-              {isPending ? "Confirming..." : isConfirming ? "Waiting for receipt..." : "Create Offer"}
+              {isPending ? "Confirmando..." : isConfirming ? "Esperando recibo..." : "Crear Oferta"}
             </Button>
 
-            {isConfirmed && <div className="text-green-500 mt-4 text-center">Transaction confirmed!</div>}
+            {isConfirmed && <div className="text-green-500 mt-4 text-center">¡Transacción confirmada!</div>}
           </form>
         </CardContent>
       </Card>
