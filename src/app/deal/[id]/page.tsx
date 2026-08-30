@@ -1,33 +1,19 @@
+"use client";
+
+import { use } from "react";
 import { Shell } from "@/components/Shell";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { DealActions } from "@/components/DealActions";
+import { useDeals } from "@/hooks/useDeals";
 
-export default async function DealDetailsPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default function DealDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
+  const { getDeal, isLoaded } = useDeals();
+  const deal = getDeal(id);
 
-  // Mock data for the specific deal
-  const deal = {
-    id,
-    status: "FUNDED_MXNB",
-    amount_mxnb: 350000.00,
-    vehicle: {
-      year: 2021,
-      make: "Honda",
-      model: "Civic",
-      vin: "3HGEJ123456789012"
-    },
-    buyer: {
-      kyc_status: true,
-      wallet: "0x1234...5678"
-    },
-    seller: {
-      kyc_status: true,
-      wallet: "0x8765...4321"
-    },
-    docs_verified: true,
-    inspection_passed: false
-  };
+  if (!isLoaded) return <Shell><div>Loading...</div></Shell>;
+  if (!deal) return <Shell><div>Deal not found.</div></Shell>;
 
   return (
     <Shell>
@@ -50,10 +36,7 @@ export default async function DealDetailsPage({ params }: { params: Promise<{ id
               <span className="text-muted-foreground">Amount Held</span>
               <span className="text-2xl font-bold">${deal.amount_mxnb.toLocaleString('es-MX')} MXNB</span>
             </div>
-            <div className="flex space-x-4 pt-2">
-              <Button className="w-full" disabled={deal.status !== "CONTRACT_SIGNED"}>Release Funds</Button>
-              <Button variant="outline" className="w-full" disabled={deal.status === "RELEASED"}>Refund</Button>
-            </div>
+            <DealActions deal={deal} />
           </CardContent>
         </Card>
 
@@ -64,11 +47,11 @@ export default async function DealDetailsPage({ params }: { params: Promise<{ id
           <CardContent className="space-y-2 text-sm">
             <div className="flex justify-between">
               <span className="text-muted-foreground">Make & Model</span>
-              <span className="font-medium">{deal.vehicle.year} {deal.vehicle.make} {deal.vehicle.model}</span>
+              <span className="font-medium">{deal.vehicle_year} {deal.vehicle_make} {deal.vehicle_model}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">VIN</span>
-              <span className="font-mono">{deal.vehicle.vin}</span>
+              <span className="font-mono">{deal.vehicle_vin}</span>
             </div>
           </CardContent>
         </Card>
