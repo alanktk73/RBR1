@@ -10,6 +10,25 @@ interface ShellProps {
   children: React.ReactNode;
 }
 
+function WalletConnectButton() {
+  const { address, isConnected } = useAccount();
+  const { connect } = useConnect();
+  const { disconnect } = useDisconnect();
+
+  if (isConnected) {
+    return (
+      <Button variant="outline" className="font-semibold" onClick={() => disconnect()}>
+        {address?.slice(0, 6)}...{address?.slice(-4)}
+      </Button>
+    );
+  }
+  return (
+    <Button variant="outline" className="font-semibold" onClick={() => connect({ connector: injected() })}>
+      Connect Wallet
+    </Button>
+  );
+}
+
 export function Shell({ children }: ShellProps) {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
@@ -35,24 +54,7 @@ export function Shell({ children }: ShellProps) {
             </nav>
           </div>
           <div>
-            {(() => {
-              const { address, isConnected } = useAccount();
-              const { connect } = useConnect();
-              const { disconnect } = useDisconnect();
-
-              if (isConnected) {
-                return (
-                  <Button variant="outline" className="font-semibold" onClick={() => disconnect()}>
-                    {address?.slice(0, 6)}...{address?.slice(-4)}
-                  </Button>
-                );
-              }
-              return (
-                <Button variant="outline" className="font-semibold" onClick={() => connect({ connector: injected() })}>
-                  Connect Wallet
-                </Button>
-              );
-            })()}
+            <WalletConnectButton />
           </div>
         </div>
       </header>

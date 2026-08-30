@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import EscrowTestABI from "../artifacts/contracts/EscrowTest.sol/EscrowTest.json";
 import { useDeals } from "@/hooks/useDeals";
-import { useEffect } from "react";
 
 export function DemoDealCreator() {
   const { addDeal } = useDeals();

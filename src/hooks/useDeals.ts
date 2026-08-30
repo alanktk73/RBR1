@@ -39,14 +39,18 @@ export function useDeals() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("escrow_deals");
-    if (stored) {
-      setDeals(JSON.parse(stored));
-    } else {
-      setDeals(initialMockDeals);
-      localStorage.setItem("escrow_deals", JSON.stringify(initialMockDeals));
-    }
-    setIsLoaded(true);
+    const initDeals = () => {
+      let initialDeals = initialMockDeals;
+      const stored = localStorage.getItem("escrow_deals");
+      if (stored) {
+        initialDeals = JSON.parse(stored);
+      } else {
+        localStorage.setItem("escrow_deals", JSON.stringify(initialMockDeals));
+      }
+      setDeals(initialDeals);
+      setIsLoaded(true);
+    };
+    initDeals();
   }, []);
 
   const addDeal = (deal: Deal) => {
